@@ -1,0 +1,27 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+
+# Allow the safe example configuration
+!.env.example
+
+# Vector database and generated data
+chroma_db/
+vectorstore/
+*.sqlite3
+
+# Testing and editors
+.pytest_cache/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
