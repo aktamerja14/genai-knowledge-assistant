@@ -1,13 +1,17 @@
 
 from app.model import get_model
+from app.prompts.basic_prompt import get_basic_prompt
 
 
 def main():
     model = get_model()
+    prompt = get_basic_prompt()
 
-    response = model.invoke(
-        "Explain Generative AI in 3 simple sentences."
-    )
+    chain = prompt | model
+
+    response = chain.invoke({
+        "topic": "Embeddings in Generative AI"
+    })
 
     print(response.content)
 
