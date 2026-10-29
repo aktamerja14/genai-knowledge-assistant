@@ -1,24 +1,18 @@
 
-import os
-
-from dotenv import load_dotenv
 from langchain_openrouter import ChatOpenRouter
 
-load_dotenv()
+from app.config import get_llm_config
 
 
 def get_model():
-    api_key = os.getenv("LLM_API_KEY")
-    model_name = os.getenv("LLM_MODEL", "openrouter/free")
+    config = get_llm_config()
 
-    if not api_key:
-        raise ValueError("LLM_API_KEY is missing from .env")
+    if config["provider"] != "openrouter":
+        raise ValueError("Unsupported LLM provider")
 
-    model = ChatOpenRouter(
-        model=model_name,
-        api_key=api_key,
+    return ChatOpenRouter(
+        model=config["model"],
+        api_key=config["api_key"],
         temperature=0,
         max_tokens=300,
     )
-
-    return model
