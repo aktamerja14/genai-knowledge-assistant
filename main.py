@@ -1,19 +1,18 @@
 
-from app.model import get_model
-from app.prompts.basic_prompt import get_basic_prompt
+from app.chains.sequential_chain import get_sequential_chain
 
 
 def main():
-    model = get_model()
-    prompt = get_basic_prompt()
+    print("Starting sequential chain...")
 
-    chain = prompt | model
+    chain = get_sequential_chain()
 
-    response = chain.invoke({
-        "topic": "Embeddings in Generative AI"
+    result = chain({
+        "topic": "Retrieval-Augmented Generation (RAG)"
     })
 
-    print(response.content)
+    print("\nFinal summary:")
+    print(result)
 
 
 if __name__ == "__main__":
