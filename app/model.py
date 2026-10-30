@@ -14,5 +14,6 @@ def get_model():
         model=config["model"],
         api_key=config["api_key"],
         temperature=0,
-        max_tokens=300,
+        max_tokens=600,
+        reasoning={"effort": "none"},
     )

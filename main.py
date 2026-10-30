@@ -1,21 +1,19 @@
 
-from app.chains.parallel_chain import get_parallel_chain
+from app.chains.conditional_chain import get_conditional_chain
 
 
 def main():
-    print("Starting parallel chain...")
+    print("Starting conditional chain...")
 
-    chain = get_parallel_chain()
+    chain = get_conditional_chain()
 
     result = chain.invoke({
-        "topic": "Retrieval-Augmented Generation (RAG)"
+    "sentiment": "negative",
+    "review": "The service was very poor and staff were unhelpful."
     })
 
-    print("\n--- Explanation ---")
-    print(result["explanation"])
-
-    print("\n--- Key Points ---")
-    print(result["key_points"])
+    print("\n--- Generated Response ---")
+    print(result)
 
 
 if __name__ == "__main__":
