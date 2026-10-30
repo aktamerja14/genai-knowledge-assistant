@@ -1,0 +1,11 @@
+Retrieval-Augmented Generation (RAG)
+
+RAG is a technique that combines information retrieval with a Large Language Model.
+
+First, the retriever searches a knowledge base and finds relevant documents.
+
+Next, the retrieved information is passed to the LLM as context.
+
+Finally, the LLM generates an answer based on the retrieved information.
+
+RAG helps reduce hallucinations and allows applications to use external or domain-specific knowledge.

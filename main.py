@@ -1,23 +1,21 @@
-from app.chains.pydantic_parser_chain import get_pydantic_parser_chain
+from app.loaders.txt_loader import load_txt_file
 
 
 def main():
-    chain = get_pydantic_parser_chain()
+    documents = load_txt_file(
+        "data/sample_docs/rag_notes.txt"
+    )
 
-    result = chain.invoke({
-        "topic": "Retrieval-Augmented Generation (RAG)"
-    })
+    print("\n--- Loaded Documents ---")
+    print("Total documents:", len(documents))
 
-    print("\n--- Pydantic Output ---")
-    print(result)
+    for index, document in enumerate(documents, start=1):
+        print(f"\nDocument {index}")
+        print("Content:")
+        print(document.page_content)
 
-    print("\n--- Individual Fields ---")
-    print("Topic:", result.topic)
-    print("Definition:", result.definition)
-    print("Key Points:", result.key_points)
-
-    print("\n--- Result Type ---")
-    print(type(result))
+        print("\nMetadata:")
+        print(document.metadata)
 
 
 if __name__ == "__main__":
